@@ -7,8 +7,8 @@ const isDev = global.DEBUG === false ? false : !process.argv.includes('--release
 const isProduction = !isDev;
 const isVerbose = process.argv.includes('--verbose') || process.argv.includes('-v');
 
-const DEV_LOCAL_STATIC_URL = 'http://localhost:2304/dist/';
-const PROD_REMOTE_CDN_URL = 'http://vulcan-olpite.unicommerce.info/OLPCUSTTRACKITE/dist/';
+const DEV_LOCAL_STATIC_URL = 'http://localhost:2304/public/dist/';
+const PROD_REMOTE_CDN_URL = 'https://animesh.firebaseapp.com/public/dist/';
 const DEST_CSS_FILE_NAME = 'dist.css';
 const jsLoaders = isProduction ? ['babel', WebpackStrip.loader('debug', 'console.log')] : ['babel'];
 
@@ -18,7 +18,7 @@ const config = {
     './index.js'
   ],
   output: {
-    path: __dirname + "/dist/",
+    path: __dirname + "/public/dist/",
     filename: 'bundle.js',
     publicPath: isDev ? DEV_LOCAL_STATIC_URL : PROD_REMOTE_CDN_URL
   },
